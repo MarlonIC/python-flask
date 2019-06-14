@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/bird_red.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages(category_filter=["success"]) %}
+    {% if messages %}
+        Success: Example 1
+        <ul>
+        {% for message in messages %}
+            <li class="success">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        Success: Example 2 (Support all the categories)
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+</body>
+</html>
