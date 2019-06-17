@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% from "_render_elements.html" import render_input %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+<h1>Sign up</h1>
+<form method="post" action="{{ url_for('signup') }}">
+    {{ render_input('username', 'User name') }}
+    {{ render_input('password', 'Password', 'password') }}
+    <input type="submit" value="Sign up">
+</form>
+{% endblock %}
